@@ -62,21 +62,16 @@ export default function Landing() {
             Master your flow, perfect your rhymes, and climb the leaderboard in this revolutionary battle rap game online.
           </p>
           
-          {/* YouTube Video Embed */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl border border-purple-600">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/0RspT9qVNpY?autoplay=1&mute=0&controls=1"
-                title="Battle Rap AI Demo - Watch epic AI rap battles in action"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="max-w-full"
-                loading="lazy"
-              />
-            </div>
+          {/* Demo Video Link */}
+          <div className="mb-8">
+            <a
+              href="https://www.youtube.com/watch?v=0RspT9qVNpY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+            >
+              🎥 Watch Demo on YouTube
+            </a>
           </div>
           
           <div className="flex gap-4 justify-center mb-12">
