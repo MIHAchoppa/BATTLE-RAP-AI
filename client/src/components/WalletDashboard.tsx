@@ -13,6 +13,10 @@ interface WalletData {
   walletAddress: string;
 }
 
+interface StoreCreditData {
+  balance: number;
+}
+
 interface Transaction {
   txHash: string;
   txType: string;
@@ -26,6 +30,11 @@ export function WalletDashboard() {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
+
+  // Fetch store credits (in-app credits for battles)
+  const { data: storeCredit, isLoading: storeCreditLoading } = useQuery<StoreCreditData>({
+    queryKey: ["/api/store-credit/balance"],
+  });
 
   // Fetch wallet balance
   const { data: walletData, isLoading: walletLoading } = useQuery<WalletData>({
@@ -102,7 +111,42 @@ export function WalletDashboard() {
   }
 
   return (
-    <>
+    <div className="space-y-6">
+      {/* Store Credits Card */}
+      <Card className="w-full border-2 border-green-500/30 bg-gradient-to-br from-green-500/5 to-green-500/10">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2 text-green-400">
+                💰 Store Credits
+              </CardTitle>
+              <CardDescription>Use these credits to battle AI opponents</CardDescription>
+            </div>
+            <Badge className="bg-green-500/20 text-green-400 border-green-500/50">
+              Active
+            </Badge>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {storeCreditLoading ? (
+            <div className="flex items-center justify-center p-8">
+              <div className="animate-spin w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full" />
+            </div>
+          ) : (
+            <div className="p-6 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-lg border border-green-500/30">
+              <div className="text-sm text-green-300 mb-1">Available Credits</div>
+              <div className="text-5xl font-bold text-green-400 mb-2" data-testid="text-store-credits">
+                ${storeCredit?.balance?.toFixed(2) || '0.00'}
+              </div>
+              <p className="text-xs text-green-300/70 mt-2">
+                🎤 Use credits to enter battles, train with AI, and unlock features
+              </p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Arc Wallet Card */}
       <Card className="w-full">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -277,6 +321,6 @@ export function WalletDashboard() {
           )}
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }
