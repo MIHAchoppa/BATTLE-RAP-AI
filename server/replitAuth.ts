@@ -125,11 +125,68 @@ export async function setupAuth(app: Express) {
     passport.serializeUser((user: Express.User, cb) => cb(null, user));
     passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
+    // Registration endpoint for local auth
+    app.post('/api/register', express.json(), async (req, res, next) => {
+      try {
+        const { email, password, firstName, lastName } = req.body;
+        
+        // Validate input
+        if (!email || !password) {
+          return res.status(400).json({ message: 'Email and password are required' });
+        }
+        
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          return res.status(400).json({ message: 'Invalid email format' });
+        }
+        
+        // Validate password length
+        if (password.length < 6) {
+          return res.status(400).json({ message: 'Password must be at least 6 characters' });
+        }
+        
+        // Check if user already exists
+        const existingUser = await storage.getUserByEmail(email);
+        if (existingUser) {
+          return res.status(400).json({ message: 'Email already registered' });
+        }
+        
+        // Hash password
+        const passwordHash = await bcrypt.hash(password, 10);
+        
+        // Create user with hashed password
+        const newUser = await storage.upsertUser({
+          email,
+          passwordHash,
+          firstName: firstName || email.split('@')[0],
+          lastName: lastName || '',
+          profileImageUrl: '',
+          subscriptionTier: 'free',
+          subscriptionStatus: 'free',
+          battlesRemaining: 3,
+          lastBattleReset: new Date(),
+        });
+        
+        // Auto-login after registration
+        const sessionUser: any = { id: newUser.id };
+        sessionUser.claims = { sub: newUser.id, email: newUser.email };
+        sessionUser.expires_at = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 365;
+        
+        req.login(sessionUser, (err: any) => {
+          if (err) return next(err);
+          res.json({ ok: true, user: { id: newUser.id, email: newUser.email } });
+        });
+      } catch (err) {
+        next(err);
+      }
+    });
+
     // JSON login endpoint for local auth
     app.post('/api/login', express.json(), (req, res, next) => {
-      passport.authenticate('local', (err: any, user: any) => {
+      passport.authenticate('local', (err: any, user: any, info: any) => {
         if (err) return next(err);
-        if (!user) return res.status(401).json({ message: 'Invalid credentials' });
+        if (!user) return res.status(401).json({ message: info?.message || 'Invalid credentials' });
         req.login(user, (err2: any) => {
           if (err2) return next(err2);
           res.json({ ok: true, user });
