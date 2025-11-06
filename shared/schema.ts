@@ -153,7 +153,7 @@ export const users = pgTable("users", {
   subscriptionTier: varchar("subscription_tier").default("free"), // free, premium, pro
   battlesRemaining: integer("battles_remaining").default(3), // Daily free battles
   lastBattleReset: timestamp("last_battle_reset").defaultNow(),
-  storeCredit: decimal("store_credit", { precision: 10, scale: 2 }).notNull().default("0.00"), // Store credit balance
+  storeCredit: decimal("store_credit", { precision: 10, scale: 2 }).notNull().default("1000.00"), // Store credit balance
   referralCode: varchar("referral_code"), // User's unique referral code
   referredBy: varchar("referred_by"), // Who referred this user
   totalBattles: integer("total_battles").default(0),
