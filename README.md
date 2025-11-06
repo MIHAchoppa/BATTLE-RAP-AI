@@ -45,6 +45,10 @@ Traditional blockchain gaming requires complex wallet setup, gas fee calculation
 - **24 training lessons** across 6 categories (Basics, Rhyme Schemes, Flow, Wordplay, Battle Tactics, Advanced)
 - **ELO matchmaking** for fair player-vs-player competition
 - **100-level XP system** with progression tracking
+- **Battle Pass** - 50-tier seasonal progression with free and premium tracks ($9.99)
+- **Cosmetic Shop** - 32 items across 8 categories (avatars, badges, titles, emotes, mic effects, stage backgrounds, victory animations, skins)
+- **Daily Challenges** - 5 rotating challenges with automatic midnight UTC reset
+- **PvP Matchmaking** - Queue system with real-time status and ELO-based opponent matching
 
 ### ⛓️ Blockchain (Arc L1)
 - **USDC wallet** creation and management
@@ -199,12 +203,16 @@ rapbots-ai/
 ├── client/                 # Frontend React app
 │   ├── src/
 │   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Route pages
-│   │   │   ├── Landing.tsx      # Public landing page
-│   │   │   ├── battle-arena.tsx # Battle interface
-│   │   │   ├── Training.tsx     # 24-lesson program
-│   │   │   ├── wallet.tsx       # USDC management
-│   │   │   └── tournaments.tsx  # Tournament system
+│   │   ├── pages/         # Route pages (25 total)
+│   │   │   ├── Landing.tsx       # Public landing page
+│   │   │   ├── battle-arena.tsx  # Battle interface
+│   │   │   ├── Training.tsx      # 24-lesson program
+│   │   │   ├── wallet.tsx        # USDC management
+│   │   │   ├── tournaments.tsx   # Tournament system
+│   │   │   ├── battle-pass.tsx   # 50-tier progression
+│   │   │   ├── shop.tsx          # Cosmetic shop
+│   │   │   ├── challenges.tsx    # Daily challenges
+│   │   │   └── matchmaking.tsx   # PvP queue system
 │   │   ├── lib/           # Utilities and helpers
 │   │   └── App.tsx        # Main app component
 │   └── index.html
@@ -398,6 +406,10 @@ Special thanks to the open-source community for:
 - [x] Legal compliance: Competitive stakes terminology
 - [x] Production deployment on Replit
 - [x] Public landing page with feature showcase
+- [x] **Battle Pass System** - 50 tiers with free/premium tracks
+- [x] **Cosmetic Shop** - 32 items across 8 categories
+- [x] **Daily Challenges** - Auto-rotating with midnight UTC reset
+- [x] **PvP Matchmaking Queue** - Real-time status with ELO pairing
 
 ### Q4 2025 - Polish & Launch
 - [ ] Public beta release
@@ -425,9 +437,15 @@ Special thanks to the open-source community for:
 ## 📊 Stats
 
 - **15,000+** lines of production code
+- **25 pages** with full authentication flow
+- **108+ API endpoints** (RESTful backend)
+- **25 database tables** with real data
 - **Sub-second** Arc L1 transaction finality
 - **500ms** average transcription latency (Groq Whisper)
-- **24 training lessons** across 6 categories
+- **48 training lessons** across 6 categories (24 main + 24 practice)
+- **50 Battle Pass tiers** with escalating rewards
+- **32 cosmetic items** across 8 categories
+- **14 daily challenge templates** with auto-rotation
 - **3 rounds** per battle (customizable)
 - **$0.50 - $100** competitive stake range
 - **8 players** max tournament size
