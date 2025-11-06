@@ -98,15 +98,18 @@ export default function Landing() {
             </Button>
           </div>
 
-          <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-400 max-w-3xl mx-auto">
             <Badge variant="secondary" className="bg-green-900 text-green-300">
-              ✓ 3 Free Battles Daily
+              ✓ Earn Real USDC
             </Badge>
             <Badge variant="secondary" className="bg-blue-900 text-blue-300">
-              ✓ Advanced AI Opponents
+              ✓ 24 Training Lessons
             </Badge>
             <Badge variant="secondary" className="bg-purple-900 text-purple-300">
-              ✓ Real Voice Synthesis
+              ✓ Skill-Based Tournaments
+            </Badge>
+            <Badge variant="secondary" className="bg-amber-900 text-amber-300">
+              ✓ Arc Blockchain
             </Badge>
           </div>
           </div>
@@ -155,34 +158,98 @@ export default function Landing() {
       {/* Why RapBots Section */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-white text-center mb-12">
-          Why RapBots Reigns Supreme
+          Play to Earn Real Money Through Skill
         </h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-purple-400">Real-Time Battle Experience</h3>
+            <h3 className="text-2xl font-bold text-purple-400">💰 Earn USDC Cryptocurrency</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Unlike traditional rap games, RapBots delivers authentic voice-powered freestyle battles. 
-              Our cutting-edge AI responds to your actual words, flow patterns, and battle tactics in real-time. 
-              No pre-written responses, no fake interactions – just pure, unfiltered battle rap competition.
+              RapBots is the first skill-based rap battle game where you earn <strong className="text-green-400">real USDC cryptocurrency</strong> on Circle's Arc L1 blockchain. Win battles, place in tournaments, and withdraw your earnings anytime - no middleman, no restrictions.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Challenge AI opponents with distinct personalities: from aggressive street battlers to 
-              technical wordplay masters. Each battle tests different aspects of your rap skills, 
-              pushing you to adapt and evolve your style.
+              <strong className="text-yellow-400">Free Rewards:</strong> Earn $0.10 USDC per win. <br/>
+              <strong className="text-yellow-400">Tournaments:</strong> $5-$250 USDC prize pools. <br/>
+              <strong className="text-yellow-400">Competitive Stakes:</strong> Challenge opponents with real USDC on the line - winner takes all (skill-based, not gambling).
             </p>
           </div>
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-purple-400">Advanced Scoring & Analytics</h3>
+            <h3 className="text-2xl font-bold text-purple-400">🎓 Master Your Craft</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Get detailed breakdowns of your performance with our professional battle rap scoring system. 
-              Track your rhyme schemes, internal rhymes, flow consistency, and wordplay complexity. 
-              See exactly where you excel and what areas need improvement.
+              Level up with our <strong className="text-blue-400">24-lesson training program</strong> covering everything from basic flow to advanced wordplay. Each lesson includes practice battles and rewards XP + currency.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Climb the global leaderboard and compete in tournaments. Monitor your win rate, 
-              battle history, and skill progression over time. Every battle makes you stronger.
+              <strong className="text-blue-400">6 Categories:</strong> Basics • Rhyme Schemes • Flow • Wordplay • Battle Tactics • Advanced<br/>
+              Track your progress, unlock new lessons, and compete with an <strong className="text-purple-400">ELO-based matchmaking system</strong> that pairs you with equal-skill opponents for fair competition.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Currency System Section */}
+      <section className="container mx-auto px-4 py-16 bg-gradient-to-r from-slate-800/50 to-purple-900/30 rounded-2xl mx-4 mb-16">
+        <h2 className="text-4xl font-bold text-white text-center mb-4">
+          Three Ways to Earn & Progress
+        </h2>
+        <p className="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+          RapBots features a transparent three-tier reward system. Earn through gameplay, compete for prizes, and withdraw real cryptocurrency.
+        </p>
+        
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <Card className="bg-slate-900/80 border-blue-500/30 text-white">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-blue-400">
+                <Star className="h-5 w-5" />
+                Store Credits
+              </CardTitle>
+              <CardDescription className="text-gray-400">Virtual Currency for Cosmetics</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <p className="text-gray-300">Start with <strong className="text-green-400">$1,000 free credits</strong></p>
+              <p className="text-gray-300">• Buy avatar items & effects</p>
+              <p className="text-gray-300">• Earn from promotions & referrals</p>
+              <p className="text-gray-300">• Cannot be withdrawn (like V-Bucks)</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-900/80 border-purple-500/30 text-white">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-purple-400">
+                <Zap className="h-5 w-5" />
+                Battle XP & Currency
+              </CardTitle>
+              <CardDescription className="text-gray-400">Earned Through Gameplay</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <p className="text-gray-300">• Win battles → <strong className="text-yellow-400">500 XP</strong></p>
+              <p className="text-gray-300">• Training lessons → <strong className="text-yellow-400">100 XP</strong></p>
+              <p className="text-gray-300">• Daily challenges → <strong className="text-yellow-400">200 XP</strong></p>
+              <p className="text-gray-300">• Level up & unlock content</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 border-green-500 text-white transform scale-105">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-green-400">
+                <Crown className="h-5 w-5" />
+                USDC Cryptocurrency
+                <Badge className="bg-green-600 text-white text-xs">REAL MONEY</Badge>
+              </CardTitle>
+              <CardDescription className="text-green-200">Arc Blockchain Rewards</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <p className="text-gray-100">• Win battles → <strong className="text-green-300">$0.10 USDC</strong></p>
+              <p className="text-gray-100">• Tournaments → <strong className="text-green-300">$5-$250 USDC</strong></p>
+              <p className="text-gray-100">• Competitive stakes → <strong className="text-green-300">Winner takes all</strong></p>
+              <p className="text-gray-100 font-semibold">✓ Fully withdrawable anytime</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+            <strong className="text-purple-400">Legal Classification:</strong> RapBots operates as a skill-based competitive gaming platform (like esports tournaments), not gambling. 
+            Outcomes are determined by rap quality scored by our AI algorithm, with ELO matchmaking ensuring fair competition.
+          </p>
         </div>
       </section>
 
