@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { BookOpen, Lock, CheckCircle2, Trophy, Star, Target } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { Navigation } from "@/components/navigation";
 
 interface TrainingLesson {
   id: string;
@@ -128,8 +129,10 @@ export default function Training() {
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-7xl">
-      <div className="mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-dark via-secondary-dark to-primary-dark">
+      <Navigation />
+      <div className="container mx-auto p-6 max-w-7xl pt-24">
+        <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
           <BookOpen className="h-10 w-10" />
           Rap Training Program
@@ -347,6 +350,7 @@ export default function Training() {
           )}
         </DialogContent>
       </Dialog>
+      </div>
     </div>
   );
 }
