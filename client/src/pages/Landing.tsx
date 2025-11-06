@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Crown, Mic, Zap, Star } from "lucide-react";
 import { SEO, generateWebPageStructuredData } from "@/components/SEO";
-const heroImage = "/images/AI_rap_battle_landing_872131b2.png";
 
 export default function Landing() {
   const structuredData = {
@@ -48,11 +47,6 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center" aria-labelledby="hero-title">
         <div className="mb-8 relative">
-          {/* Hero Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15 z-0"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          />
           <div className="relative z-10">
             <h1 id="hero-title" className="text-6xl font-bold text-white mb-4">
               Battle Rap AI: Face Off Against the Future of <span className="text-purple-400">Flow</span>
