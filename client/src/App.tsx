@@ -79,6 +79,8 @@ function Router() {
 }
 
 function App() {
+  const { isAuthenticated, isLoading } = useAuth();
+
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
@@ -87,12 +89,15 @@ function App() {
             <Toaster />
             <SponsoredBanner interval={25000} enabled={true} />
             <InstallPrompt />
-            <AudioAutoplayGate 
-              showDetailedInstructions={true}
-              onAudioUnlocked={() => {
-                console.log('🎵 Global audio unlocked - all auto-play features enabled');
-              }}
-            />
+            {/* Only show audio gate for authenticated users */}
+            {!isLoading && isAuthenticated && (
+              <AudioAutoplayGate 
+                showDetailedInstructions={true}
+                onAudioUnlocked={() => {
+                  console.log('🎵 Global audio unlocked - all auto-play features enabled');
+                }}
+              />
+            )}
             <ErrorBoundary>
               <Router />
             </ErrorBoundary>
