@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Camera, Sparkles } from "lucide-react";
+import { Navigation } from "@/components/navigation";
 
 interface Profile {
   id: string;
@@ -194,6 +195,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen p-8 bg-gradient-to-br from-primary-dark via-secondary-dark to-primary-dark">
+      <Navigation />
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Profile Info */}
