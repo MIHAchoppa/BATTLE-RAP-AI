@@ -32,7 +32,7 @@ Technical Implementations:
 ## External Dependencies
 - **Groq API**: For instant speech-to-text (Whisper), AI rap generation (Llama), and PlayAI TTS models.
 - **OpenAI API**: For gpt-4o-mini-tts (2025) with steerability features.
-- **ElevenLabs API**: Premium TTS with advanced features including native speed control, breath patterns, Turbo models, and pronunciation dictionaries.
+- **ElevenLabs API**: Premium TTS with advanced features including native speed control, breath patterns, Turbo models, and pronunciation dictionaries. Also powers all sound effects (crowd reactions, bells, victory sounds).
 - **Circle Arc L1 Blockchain**: For USDC-based tournament rewards and wager battling.
 - **Typecast.ai**: For text-to-speech generation (system fallback).
 - **ARTalk**: For advanced speech-driven 3D head animation and lip-sync.
@@ -40,3 +40,26 @@ Technical Implementations:
 - **Replit Auth**: For user authentication and management.
 - **PostgreSQL**: Database for user, session, battle data, encrypted API key storage, Arc wallet addresses, and USDC transaction history.
 - **FFmpeg**: For audio and video processing capabilities.
+
+## Recent Changes (November 6, 2025)
+
+### 🎨 Navigation & UI Accessibility Improvements
+- **Added Navigation to Profile Page**: Users can now easily access Wallet, Battle Arena, Tournaments, Training, and all features from Profile page
+- **Added Navigation to Battle Arena**: Full navigation menu now available during battles for quick access to Profile, Wallet, and other pages
+- **Consistent UI**: Navigation component now appears across all major pages (Home, Profile, Wallet, Battle Arena, Tournaments, Training)
+- **Mobile-Responsive**: Compact icon-based navigation optimized for all screen sizes
+
+### 🐛 Critical Audio Playback Fix  
+- **Duplicate TTS Issue Resolved**: Fixed critical bug where AI voice was playing 5 times simultaneously during battles
+- **Root Cause**: Multiple audio components (SimpleAudioPlayer in BattleAvatar + AudioControls) were both playing the same TTS audio
+- **Solution**: Removed SimpleAudioPlayer from BattleAvatar, keeping only AudioControls as the single audio playback source
+- **Lip-Sync Preserved**: AdvancedLipSync continues to work in visual-only mode (disableAudioPlayback=true) for realistic mouth animations
+- **User Experience**: Clean, single-stream audio playback with proper playback controls
+- **Architect Approved**: PASS verdict - no functionality broken, duplicate audio eliminated
+
+### 🔊 Audio Architecture Clarification
+- **TTS Audio Playback**: AudioControls component handles all TTS audio from Groq, OpenAI, or ElevenLabs (user choice via Settings)
+- **Sound Effects (SFX)**: ElevenLabs SFX Service ALWAYS handles sound effects (crowd reactions, bells, victory sounds) regardless of TTS provider
+- **Independence**: SFX system is completely independent from TTS provider selection - users can use Groq for TTS while still getting ElevenLabs-powered sound effects
+- **Fallback System**: If ElevenLabs API is unavailable, programmatic Web Audio API generates fallback sounds
+- **Clean Architecture**: Clear separation between TTS audio playback, lip-sync animation, and sound effects - no redundancy
