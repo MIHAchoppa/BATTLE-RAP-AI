@@ -1,7 +1,7 @@
 # Voice-Enabled Rap Battle Game
 
 ## Overview
-This project is a real-time, voice-enabled rap battle application designed for immersive battles against AI opponents. It leverages advanced AI for speech recognition, rap generation, and text-to-speech, aiming to create an authentic and dynamic battle rap experience. The application includes a sophisticated scoring system, character selection with distinct voices, and monetization features, positioning it as a unique entertainment platform in the voice AI gaming market. The ambition is to provide a highly engaging and technically advanced rap battle simulation.
+This project is a real-time, voice-enabled rap battle application designed for immersive battles against AI opponents. It leverages advanced AI for speech recognition, rap generation, and text-to-speech, aiming to create an authentic and dynamic battle rap experience. The application includes a sophisticated scoring system, character selection with distinct voices, email/password authentication, and monetization features, positioning it as a unique entertainment platform in the voice AI gaming market. The ambition is to provide a highly engaging and technically advanced rap battle simulation.
 
 ## User Preferences
 - Focus on functional implementation over extensive documentation
@@ -10,6 +10,18 @@ This project is a real-time, voice-enabled rap battle application designed for i
 - Implement responsive design for mobile and desktop
 - Use authentic data from real API calls, no mock/placeholder data
 - Include user's Replit referral link for new users signing up to Replit
+
+## Recent Changes (November 6, 2025)
+### 🔐 Email/Password Authentication System
+- **Local Authentication**: Added email/password registration and login system with bcrypt password hashing
+- **Dual Auth Support**: Maintains both Replit OAuth (default on Replit) and local email/password authentication
+- **Registration UI**: New registration form with email, password, first name, and last name fields
+- **Login UI**: Enhanced login interface with toggle between login and registration modes
+- **Password Security**: Secure password hashing with bcrypt (10 salt rounds)
+- **Email Validation**: Client and server-side email format validation
+- **Auto-login**: Users automatically logged in after successful registration
+- **Database Schema**: Added `passwordHash` field to users table for local authentication
+- **User-friendly UX**: Clear error messages, loading states, and success notifications
 
 ## System Architecture
 The application is built with a clear separation between frontend and backend services. The UI/UX features a modern single-page application (SPA) design with React and Vite, styled responsively using Tailwind CSS, and enhanced with Framer Motion for smooth animations. Key technical implementations include real-time voice recording with instant transcription, AI-powered rap generation with adjustable difficulty and complexity levels (e.g., "paper-folded 9,393,939 times" skill with multiple rhyme schemes), profanity filtering, and a comprehensive battle scoring system that evaluates rhyme density, flow quality, and creativity. Character avatars are AI-generated and feature advanced lip-sync using ARTalk for photorealistic animations. The system also includes a robust monetization model with subscription tiers and secure payment processing via Stripe, managed with Replit Auth and a PostgreSQL database.
