@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { BattleCharacter } from "@shared/characters";
 import { AdvancedLipSync } from "./advanced-lip-sync";
-import { SimpleAudioPlayer } from "./simple-audio-player";
 
 interface BattleAvatarProps {
   isAISpeaking: boolean;
@@ -168,19 +167,7 @@ export function BattleAvatar({
             />
           )}
           
-          {/* Dedicated Audio Player for TTS - FORCED AUTOPLAY */}
-          <SimpleAudioPlayer 
-            audioUrl={audioUrl}
-            autoPlay={true}  // FORCE auto-play ALL AI responses
-            volume={1.0}
-            onPlay={() => {
-              console.log('🔥 FORCED TTS Audio started - AI is now speaking!');
-              // setIsAISpeaking(true); // State managed by parent component
-            }}
-            onEnded={() => {
-              console.log('🔇 TTS Audio ended - AI finished speaking');
-            }}
-          />
+          {/* Audio playback handled by AudioControls component in battle-arena.tsx */}
           
           {/* Subtle visual feedback when speaking */}
           {isAISpeaking && (
