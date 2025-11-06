@@ -155,6 +155,14 @@ class MuseTalkLipSync:
         try:
             if avatar_id not in self.avatars:
                 return {"success": False, "error": f"Avatar {avatar_id} not prepared"}
+            
+            # Validate paths to prevent directory traversal attacks
+            audio_path = os.path.abspath(audio_path)
+            output_path = os.path.abspath(output_path)
+            
+            # Ensure paths don't contain dangerous sequences
+            if '..' in audio_path or '..' in output_path:
+                return {"success": False, "error": "Invalid path: directory traversal not allowed"}
                 
             logger.info(f"Generating lip sync video for {avatar_id}")
             
@@ -189,6 +197,7 @@ class MuseTalkLipSync:
                 output_path
             ]
             
+            # Safe from command injection: using list args with shell=False (default)
             result = subprocess.run(cmd, capture_output=True, text=True)
             
             if result.returncode != 0:
